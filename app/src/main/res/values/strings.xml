@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">VP</string>
+    <string name="sign_in">Авторизация</string>
+    <string name="to_sign_up_button">Зарегистрировать</string>
+    <string name="sign_in_button">Войти</string>
+    <string name="sign_up">Регистрация</string>
+    <string name="to_sign_in">Авторизоваться</string>
+</resources>
