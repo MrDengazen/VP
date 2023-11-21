@@ -1,51 +1,69 @@
 package com.example.vp;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.database.Cursor;
-import android.database.SQLException;
-import android.database.sqlite.SQLiteDatabase;
-import android.os.Bundle;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 public class SignInActivity extends AppCompatActivity {
-    private DatabaseHelper mDBHelper;
-    private SQLiteDatabase mDb;
+
+    private static final String TAG = "TEST";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mDBHelper = new DatabaseHelper(this);
-        try {
-            mDBHelper.updateDataBase();
-        } catch (IOException mIOException) {
-            throw new Error("UnableToUpdateDatabase");
-        }
-        mDb = mDBHelper.getWritableDatabase();
-        ArrayList<HashMap<String, Object>> clients = new ArrayList<HashMap<String, Object>>();
-        HashMap<String, Object> client;
-        Cursor cursor = mDb.rawQuery("SELECT * FROM users", null);
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            client = new HashMap<String, Object>();
-
-            // Заполняем клиента
-            client.put("name",  cursor.getString(0));
-            client.put("login",  cursor.getString(1));
-            client.put("password",  cursor.getString(2));
-            client.put("isadmin",  cursor.getString(3));
-
-            // Закидываем клиента в список клиентов
-            clients.add(client);
-
-            // Переходим к следующему клиенту
-            cursor.moveToNext();
-        }
-        cursor.close();
-
         setContentView(R.layout.activity_sign_in);
+        EditText password_field = findViewById(R.id.password_field);
+        EditText username_field = findViewById(R.id.username_field);
+        Button sign_in_button = findViewById(R.id.sign_in);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        ArrayList<Map<String, Object>> users = new ArrayList<>();
+        db.collection("users").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        users.add(document.getData());
+                        System.out.println(users);
+                    }
+                } else {
+                    Log.w(TAG, "Error getting documents.", task.getException());
+                }
+            }
+        });
+        sign_in_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String username = username_field.getText().toString();
+                String password = password_field.getText().toString();
+                if (username.length() > 0 && password.length() > 0) {
+                    for (Map<String, Object> user : users) {
+                        String user_password = Objects.requireNonNull(user.get("password")).toString();
+                        String user_username = Objects.requireNonNull(user.get("username")).toString();
+                        if (user_username.equals(username) && user_password.equals(password)) {
+                            if ((boolean) Objects.requireNonNull(user.get("isadmin"))) {
+                                Intent myIntent = new Intent(SignInActivity.this, SignUpActivity.class);
+                                startActivity(myIntent);
+                            }
+                        }
+                    }
+                }
+            }
+        });
     }
 }

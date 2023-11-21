@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "354810020359",
+    "project_id": "verh-a93a8",
+    "storage_bucket": "verh-a93a8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:354810020359:android:90017ae17acc2f6b01e0a2",
+        "android_client_info": {
+          "package_name": "com.example.vp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_pZodmCc7A-eXMG8i3cjmVlh-tVkfjIA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

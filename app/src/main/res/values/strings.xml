@@ -5,4 +5,7 @@
     <string name="sign_in_button">Войти</string>
     <string name="sign_up">Регистрация</string>
     <string name="to_sign_in">Авторизоваться</string>
+    <string name="login">login</string>
+    <string name="password">password</string>
+    <string name="fio">FIO</string>
 </resources>

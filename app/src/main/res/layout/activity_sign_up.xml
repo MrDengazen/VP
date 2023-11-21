@@ -18,40 +18,65 @@
         app:layout_constraintTop_toBottomOf="@+id/password_field" />
 
     <EditText
-        android:id="@+id/username_field"
+        android:id="@+id/password_field"
         android:layout_width="212dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="47dp"
+        android:layout_marginBottom="151dp"
+        android:background="@color/teal_200"
+        android:hint="@string/password"
+        android:importantForAutofill="no"
+        android:inputType="textPassword"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/sign_up"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username_field" />
+
+    <EditText
+        android:id="@+id/fio_field"
+        android:layout_width="212dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="22dp"
+        android:background="@color/teal_200"
+        android:hint="@string/fio"
+        android:importantForAutofill="no"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/password_field"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/username_field"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sign_up_label" />
+
+    <EditText
+        android:id="@+id/username_field"
+        android:layout_width="212dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="23dp"
+        android:background="@color/teal_200"
+        android:hint="@string/login"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/password_field"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fio_field" />
 
     <TextView
         android:id="@+id/sign_up_label"
         android:layout_width="190dp"
         android:layout_height="0dp"
-        android:layout_marginTop="146dp"
-        android:layout_marginBottom="43dp"
+        android:layout_marginTop="46dp"
+        android:layout_marginBottom="16dp"
         android:gravity="center"
         android:text="@string/sign_up"
         android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/username_field"
+        app:layout_constraintBottom_toTopOf="@+id/fio_field"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/password_field"
-        android:layout_width="212dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="54dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/sign_up"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username_field" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
