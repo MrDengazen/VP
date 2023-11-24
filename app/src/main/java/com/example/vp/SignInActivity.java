@@ -1,32 +1,45 @@
 package com.example.vp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.FirebaseOptions;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
 public class SignInActivity extends AppCompatActivity {
 
     private static final String TAG = "TEST";
+    SharedPreferences sPref;
+    final boolean is_logged = false;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         setContentView(R.layout.activity_sign_in);
         EditText password_field = findViewById(R.id.password_field);
         EditText username_field = findViewById(R.id.username_field);
@@ -57,13 +70,18 @@ public class SignInActivity extends AppCompatActivity {
                         String user_username = Objects.requireNonNull(user.get("username")).toString();
                         if (user_username.equals(username) && user_password.equals(password)) {
                             if ((boolean) Objects.requireNonNull(user.get("isadmin"))) {
-                                Intent myIntent = new Intent(SignInActivity.this, SignUpActivity.class);
-                                startActivity(myIntent);
+                                Intent intent2 = new Intent(v.getContext(), SignUpActivity.class);
+                                startActivity(intent2);
+                            }
+                            else{
+                                Intent intent2 = new Intent(v.getContext(), UserActivity.class);
+                                startActivity(intent2);
                             }
                         }
                     }
                 }
             }
         });
+
     }
 }
