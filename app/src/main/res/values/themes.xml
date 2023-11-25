@@ -8,4 +8,8 @@
         <item name="android:shape">@drawable/button_submit</item>
         <item name="colorAccent">@color/green   </item>
     </style>
+    <style name="radioButton" parent="Theme.AppCompat">
+        <item name="colorControlNormal">#ffd9d9d9</item>
+        <item name="colorAccent">@color/light_green</item>
+    </style>
 </resources>

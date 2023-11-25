@@ -3,22 +3,21 @@
     <item
         android:id="@+id/main"
         android:title="@string/main"
-        android:icon="@mipmap/main_foreground"/>
+        android:icon="@drawable/main"/>
     <item
         android:id="@+id/menu"
         android:title="@string/menu"
-        android:icon="@mipmap/menu_foreground"/>
+        android:icon="@drawable/menu"/>
     <item
-        android:id="@+id/cart"
-        android:title="@string/cart"
-        android:icon="@drawable/ic_launcher_foreground"/>
+        android:id="@+id/order"
+        android:title="@string/order"
+        android:icon="@drawable/order"/>
     <item
         android:id="@+id/vote"
         android:title="@string/vote"
-        android:icon="@mipmap/vote_foreground"/>
+        android:icon="@drawable/vote"/>
     <item
         android:id="@+id/proflie"
         android:title="@string/profile"
-        android:icon="@mipmap/profile_foreground"/>
-
+        android:icon="@drawable/profile"/>
 </menu>

@@ -3,6 +3,8 @@ package com.example.vp;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.RadioButton;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,8 +18,7 @@ public class UserActivity extends AppCompatActivity
     BottomNavigationView bottomNavigationView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
@@ -28,11 +29,13 @@ public class UserActivity extends AppCompatActivity
                 .setOnItemSelectedListener(this);
         bottomNavigationView.setSelectedItemId(R.id.main);
     }
+
     MainFragment mainFragment = new MainFragment();
     MenuFragment menuFragment = new MenuFragment();
     CartFragment cartFragment = new CartFragment();
     ProfileFragment profileFragment = new ProfileFragment();
     VoteFragment voteFragment = new VoteFragment();
+
     @Override
     public boolean
     onNavigationItemSelected(@NonNull MenuItem item)
@@ -65,7 +68,7 @@ public class UserActivity extends AppCompatActivity
                         .replace(R.id.flFragment, voteFragment)
                         .commit();
                 return true;
-            case R.id.cart:
+            case R.id.order:
                 getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.flFragment, cartFragment)
