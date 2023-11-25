@@ -69,7 +69,7 @@
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:scrollbars="none"
         android:layout_margin="10dp">
 
@@ -104,6 +104,58 @@
                 android:layout_marginEnd="10dp"/>
             <ImageButton
                 android:id="@+id/imageButton16"
+                android:layout_width="150dp"
+                android:layout_height="190dp"
+                android:scaleType="fitXY"
+                android:background="@color/tranceparent"
+                android:src="@drawable/s3" />
+        </LinearLayout>
+    </HorizontalScrollView>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:src="@drawable/soups"
+        android:scaleType="fitXY"
+        android:layout_marginEnd="60dp"
+        android:layout_marginVertical="10dp"/>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:layout_margin="10dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/imageButton17"
+                android:layout_width="150dp"
+                android:layout_height="190dp"
+                android:scaleType="fitXY"
+                android:background="@color/tranceparent"
+                android:src="@drawable/s3"
+                android:layout_marginEnd="10dp"/>
+            <ImageButton
+                android:id="@+id/imageButton18"
+                android:layout_width="150dp"
+                android:layout_height="190dp"
+                android:scaleType="fitXY"
+                android:background="@color/tranceparent"
+                android:src="@drawable/s3"
+                android:layout_marginEnd="10dp"/>
+            <ImageButton
+                android:id="@+id/imageButton19"
+                android:layout_width="150dp"
+                android:layout_height="190dp"
+                android:scaleType="fitXY"
+                android:background="@color/tranceparent"
+                android:src="@drawable/s3"
+                android:layout_marginEnd="10dp"/>
+            <ImageButton
+                android:id="@+id/imageButton20"
                 android:layout_width="150dp"
                 android:layout_height="190dp"
                 android:scaleType="fitXY"

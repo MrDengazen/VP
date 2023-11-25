@@ -18,20 +18,42 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.fragment_main, container, false);
         RadioGroup radioGroup = myView.findViewById(R.id.rg);
+        Fragment allFragment = new AllFragment();
+        Fragment chinaFragment = new ChinaFragment();
+        Fragment franceFragment = new FranceFragment();
+        Fragment italyFragment = new ItalyFragment();
+        getChildFragmentManager()
+                .beginTransaction()
+                .replace(R.id.kitchen, allFragment)
+                .commit();
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int i) {
                 switch (i) {
                     case R.id.all:
-                        System.out.println(14);
+                        getChildFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.kitchen, allFragment)
+                                .commit();
                         break;
                     case R.id.china:
-                        Log.i("123", "china");
+                        getChildFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.kitchen, chinaFragment)
+                                .commit();
                         break;
-                    case R.id.italy: Log.i("123", "italy");
+                    case R.id.italy:
+                        getChildFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.kitchen, franceFragment)
+                                .commit();
                         break;
-                    case R.id.france: Log.i("123", "france");
+                    case R.id.france:
+                        getChildFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.kitchen, italyFragment)
+                                .commit();
                         break;
 
                     default:
